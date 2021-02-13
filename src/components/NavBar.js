@@ -1,16 +1,16 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../scss/Components/Navbar.scss';
 
 const Navbar = () => {
 	return (
 		<div className="Navbar">
-			<NavLink to="/create-recipe" className="Navbar-title">
+			<Link to="/create-recipe" className="Navbar-title">
 				Create Recipe
-			</NavLink>
-			<NavLink to="/" className="Navbar-title">
+			</Link>
+			<Link to="/" className="Navbar-title">
 				Recipe Search
-			</NavLink>
+			</Link>
 		</div>
 	);
 };

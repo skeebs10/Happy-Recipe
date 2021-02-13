@@ -1,12 +1,12 @@
-// import React from 'react';
-// import Button from '../Components/Buttons';
-// import '../scss/Components/Form.scss'; ///css styling will be here
+import React from 'react';
+import Button from '../Components/Buttons';
+import '../scss/Components/Form.scss';
 
+const Form = ({ getRecipe }) => (
+    <form onSubmit={getRecipe} style={{ marginBottom: '2rem' }}>
+        <input className="Form__input" type="text" name="recipeName" />
+        <Button title="Search" type="submit" />
+    </form>
+);
 
-// const Form = ( => (
-//     <form onSubmit= >
-//     <input className="Form_input" type="text" name="recipeName" />
-//     <Button></Button>
-// );
-
-// export default Form;
+export default Form;

@@ -1,30 +1,23 @@
-import React from 'react';
-import App from '../pages/App';
-import About from '../pages/About';
-import Home from '../pages/Home';
-import Contact from '../pages/Contact';
+import Home from '../Pages/Home';
+import Recipe from '../Pages/Recipe';
+import CreateRecipe from '../Pages/CreateRecipe';
 
 const routes = [
 	{
-		Component: Contact,
-		key: 'Contact',
-		path: '/contact'
+		Component: Recipe,
+		key: 'Recipe',
+		path: '/recipe/:id'
 	},
+	{
+		Component: CreateRecipe,
+		key: 'CreateRecipe',
+		path: '/create-recipe'
+	}
 	{
 		Component: Home,
 		key: 'Home',
-		path: '/home'
-	},
-	{
-		Component: About,
-		key: 'About',
-		path: '/about'
-	},
-	{
-		Component: App,
-		key: 'App',
 		path: '/'
-	}
+	},
 ];
 
 export default routes;
