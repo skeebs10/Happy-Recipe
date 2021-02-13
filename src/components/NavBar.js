@@ -1,16 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import '../scss/Components/Navbar.scss';
 
-const NavBar = props => {
+const Navbar = () => {
 	return (
-		<nav className="NavBar">
-			{props.routes.map(({ key, path }) => (
-				<Link key={key} to={path}>
-					{key}
-				</Link>
-			))}
-		</nav>
+		<div className="Navbar">
+			<NavLink to="/create-recipe" className="Navbar-title">
+				Create Recipe
+			</NavLink>
+			<NavLink to="/" className="Navbar-title">
+				Recipe Search
+			</NavLink>
+		</div>
 	);
 };
 
-export default NavBar;
+export default Navbar;
