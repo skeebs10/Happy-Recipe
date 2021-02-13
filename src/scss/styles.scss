@@ -4,27 +4,30 @@
 
 body {
   font-size: 16px;
+  background:#f3f3f3;
 }
 
-.NavBar {
-  display: flex;
-  justify-content: space-around;
+
+img {
   width: 100%;
-  background-color: #f0f0f0;
+  height: 220px;
 }
 
-.HomePage {
-
+a {
+  color: #e74c3c !important;
 }
 
-.AboutPage {
-
+button:focus {
+  outline: none;
 }
 
-.ContactPage{
 
+input[type="text"] { 
+  outline: none;
 }
 
-.AppPage {
-
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px #f3f3f3 inset;
+  -webkit-text-fill-color: #2c3e50 !important;
 }
+
