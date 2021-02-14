@@ -1,10 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from '../../Components/Buttons';
-import Dialog from '@material-ui/core/Dialog';
+//pop ups below//
+import Dialog from '@material-ui/core/Dialog'; 
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
+//passing prop creaetd in index.js
 const Recipes = ({ recipes }) => {
 	const history = useHistory();
 	const [open, setOpen] = React.useState(false);
@@ -68,6 +70,7 @@ const Recipes = ({ recipes }) => {
 										onClick={() => handleRecipeButton(recipe)}
 										title={'View Recipe'}
 									/>
+									{/* Opens Dialogue Box */}
 									<Button title={'Delete'} onClick={handleClickOpen} />
 								</div>
 							</div>

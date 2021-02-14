@@ -8,6 +8,8 @@ import '../../scss/Pages/Home/index.scss';
 export default function App() {
 	const [recipes, setRecipies] = useState([]);
 
+	//will run when component runs successfully, gets api from backed
+
 	useEffect(() => {
 		axios
 			.get('/api')
@@ -26,6 +28,7 @@ export default function App() {
 
 	return (
 		<div className="RecipeSearch">
+			{/* Made getRecipe prop here */}
 			<Form getRecipe={getRecipe} />
 			<Recipes recipes={recipes} />
 		</div>
