@@ -1,14 +1,21 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Button from '../../Components/Buttons';
 import '../../scss/Pages/Recipe/index.scss';
+import CreatUpdateRecipe from '../../Components/createUpdateRecipe';
+import Dialog from '@material-ui/core/Dialog';
+import { toast } from 'react-toastify';
 
 function RecipeDetail({ match }) {
 	const [recipeDetails, setRecipeDetails] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [errMess, setErrMess] = useState(null);
+	const [ingredientName, setIngredientName] = useState(null);
 	const history = useHistory();
+	const [open, setOpen] = useState(false);
+	const [data, setData] = useState(null);
+	// const [errMess, setErrMess] = useState(null);
 
 	useEffect(() => {
 		axios
@@ -18,9 +25,9 @@ function RecipeDetail({ match }) {
 				}
 			})
 			.then(res => {
-				console.log('recipe', res.data);
 				if (res.data.success) {
 					setRecipeDetails(res.data.data);
+					setData(res.data.data);
 					setErrMess('');
 				} else {
 					if (res.data.error) {
@@ -30,9 +37,16 @@ function RecipeDetail({ match }) {
 				setLoading(false);
 			})
 			.catch(err => {
-				console.log('err', err);
 				setLoading(false);
-				setErrMess(err.response.data.message);
+				console.log('err', err.response.data);
+				let error = err?.response?.data;
+				error = !!error.error.message
+					? error.error.message
+					: !!error.message
+					? error.message
+					: '';
+				toast.error(`Something went wrong ${error}`);
+				setErrMess(error);
 			});
 	}, []);
 
@@ -40,21 +54,106 @@ function RecipeDetail({ match }) {
 		history.push('/');
 	};
 
-	return (
-		<div className="container">
-			{!!recipeDetails && !loading ? (
-				<div className="Active-recipe">
-					<img
-						className="Active-recipe__img"
-						src={recipeDetails.image_url}
-						alt={recipeDetails.title}
-					/>
-					<h3 className="Active-recipe__title">{recipeDetails.title}</h3>
-					<h4 className="Active-recipe__publisher">
-						Publisher: <span>{recipeDetails.publisher}</span>
-					</h4>
+	const handleOpen = () => {
+		setOpen(!open);
+	};
 
-					<Button title="Go Home" onClick={handleGoHome} />
+	const handleChange = e => {
+		if (e.target.name === 'ingredients')
+			return setIngredientName(e.target.value);
+		setData({ ...data, [e.target.name]: e.target.value });
+	};
+
+	const handleAddIngredient = () => {
+		setData({
+			...data,
+			ingredients: [...data.ingredients, ingredientName]
+		});
+		setIngredientName('');
+	};
+	const handleSubmit = e => {
+		e.preventDefault();
+		axios
+			.put('/api/id', {
+				id: match?.params?.id,
+				...data
+			})
+			.then(res => {
+				if (res.data.success) {
+					toast.success('Recipe updated successfully');
+					setRecipeDetails(data);
+					handleOpen();
+				} else toast.info(res.data.message);
+			})
+			.catch(err => {
+				console.log('err', err.response.data);
+				let error = err?.response?.data;
+				error = !!error.error.message
+					? error.error.message
+					: !!error.message
+					? error.message
+					: '';
+
+				toast.error(`Something went wrong ${error}`);
+			});
+	};
+
+	return (
+		<div className="container Active-recipe">
+			<Dialog
+				open={open}
+				maxWidth={'sm'}
+				onClose={handleOpen}
+				fullWidth
+				className="Active-recipe__update-recipe-dialog"
+			>
+				<CreatUpdateRecipe
+					data={data}
+					handleChange={handleChange}
+					update
+					handleSubmit={handleSubmit}
+					handleAddIngredient={handleAddIngredient}
+				/>
+			</Dialog>
+
+			{!!recipeDetails && !loading ? (
+				<div className="Active-recipe__main">
+					<div>
+						<img
+							className="Active-recipe__img"
+							src={recipeDetails.image_url}
+							alt={recipeDetails.title}
+						/>
+					</div>
+					<div>
+						<h1 className="Active-recipe__title">{recipeDetails.title}</h1>
+						<h5 className="Active-recipe__sub-heading">
+							Publisher: <span>{recipeDetails.publisher}</span>
+						</h5>
+						<h5 className="Active-recipe__sub-heading">
+							Description: <span>{recipeDetails.description}</span>
+						</h5>
+						<h5 className="Active-recipe__sub-heading">
+							Ingredients:{' '}
+							<span>
+								{recipeDetails.ingredients.map((ingredient, index) =>
+									index > 0 ? `, ${ingredient}` : ingredient
+								)}
+							</span>
+						</h5>
+						<div>
+							<Button
+								title="Go Home"
+								onClick={handleGoHome}
+								className="Active-recipe__btn"
+							/>
+							<Button
+								title="Update"
+								onClick={handleOpen}
+								className="Active-recipe__btn"
+							/>
+						</div>
+					</div>
 				</div>
 			) : (
 				!loading && errMess && <div>{errMess}</div>

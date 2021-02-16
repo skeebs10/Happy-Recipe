@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import '../../scss/Pages/CreateRecipe/index.scss';
-import Button from '../../Components/Buttons';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import CreatUpdateRecipe from '../../Components/createUpdateRecipe';
 
 const CreateRecipe = () => {
 	const [data, setData] = useState({
@@ -12,70 +12,58 @@ const CreateRecipe = () => {
 		publisher: '',
 		ingredients: []
 	});
+	const [ingredientName, setIngredientName] = useState(null);
 
 	const handleChange = e => {
+		if (e.target.name === 'ingredients')
+			return setIngredientName(e.target.value);
 		setData({ ...data, [e.target.name]: e.target.value });
+	};
+
+	const handleAddIngredient = () => {
+		setData({ ...data, ingredients: [...data.ingredients, ingredientName] });
+		setIngredientName('');
 	};
 
 	const handleSubmit = e => {
 		e.preventDefault();
+		axios
+			.post('/api/', data)
+			.then(({ data }) => {
+				if (data.success) {
+					setData({
+						title: '',
+						description: '',
+						image_url: '',
+						publisher: '',
+						ingredients: []
+					});
+					toast.success(data.message);
+				}
+			})
+			.catch(err => {
+				console.log('err', err.response.data);
+				let error = err?.response?.data;
+				error = !!error.error.message
+					? error.error.message
+					: !!error.message
+					? error.message
+					: '';
+				toast.error(`Something went wrong ${error}`);
+			});
 	};
 
 	return (
 		<div className="Create-Recipe">
 			<h1 className="Create-Recipe__title"> Create Recipe </h1>
 
-			<Card className="Create-Recipe__Card">
-				<CardContent>
-					<form onSubmit={handleSubmit}>
-						<div className="Create-Recipe__field">
-							<label className="Create-Recipe__label col-3">Recipe Name</label>
-							<input
-								type="text"
-								onChange={handleChange}
-								className="Create-Recipe__input col-8"
-								name="title"
-							/>
-						</div>
-						<br />
-						<div className="Create-Recipe__field">
-							<label className="Create-Recipe__label col-3">Description</label>
-							<input
-								type="text"
-								onChange={handleChange}
-								className="Create-Recipe__input col-8"
-								name="description"
-							/>
-						</div>
-						<br />
-						<div className="Create-Recipe__field">
-							<label className="Create-Recipe__label col-3">Image Url</label>
-							<input
-								type="url"
-								onChange={handleChange}
-								className="Create-Recipe__input col-8"
-								name="image_url"
-							/>
-						</div>
-						<br />
-						<div className="Create-Recipe__field">
-							<label className="Create-Recipe__label col-3">Publisher</label>
-							<input
-								type="text"
-								onChange={handleChange}
-								className="Create-Recipe__input col-8"
-								name="publisher"
-							/>
-						</div>
-						<br />
-						<Button
-							title="Create Recipe"
-							type="submit"
-							className="Create-Recipe__submit-btn"
-						/>
-					</form>
-				</CardContent>
-			</Card>
+			<CreatUpdateRecipe
+				handleSubmit={handleSubmit}
+				data={data}
+				handleChange={handleChange}
+				handleAddIngredient={handleAddIngredient}
+				ingredientName={ingredientName}
+			/>
 		</div>
 	);
 };

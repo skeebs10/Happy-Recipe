@@ -4,6 +4,11 @@ import CreateRecipe from '../Pages/CreateRecipe';
 
 const routes = [
 	{
+		Component: Home,
+		key: 'Home',
+		path: '/'
+	},
+	{
 		Component: Recipe,
 		key: 'Recipe',
 		path: '/recipe/:id'
@@ -13,11 +18,6 @@ const routes = [
 		key: 'CreateRecipe',
 		path: '/create-recipe'
 	}
-	{
-		Component: Home,
-		key: 'Home',
-		path: '/'
-	},
 ];
 
 export default routes;

@@ -1,25 +1,26 @@
 import React from 'react';
-import NavBar from '../components/NavBar';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import routes from './routes';
-const AppRouter = () => {
+import Navbar from '../Components/Navbar';
+import { toast, ToastContainer } from 'react-toastify';
+
+const App = () => {
 	return (
-		//from node_modules from react library//
 		<Router>
-			{/* Passing the props here below */}
-			<NavBar routes={routes} />
+			<Navbar />
 			<Switch>
 				{routes.map(({ Component, key, path }) => (
 					<Route
 						key={key}
 						path={path}
-						//Grabbing component key from routes.js//
-						component={() => <Component page={key} />}
-					></Route>
+						component={props => <Component page={key} {...props} />}
+						exact
+					/>
 				))}
 			</Switch>
+			<ToastContainer position={toast.POSITION.TOP_RIGHT} />
 		</Router>
 	);
 };
 
-export default AppRouter;
+export default App;

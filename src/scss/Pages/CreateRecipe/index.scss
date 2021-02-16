@@ -1,0 +1,13 @@
+.Create-Recipe {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    .Create-Recipe__title {
+      font-family: sans-serif;
+      text-align: center;
+    }
+  }
+  

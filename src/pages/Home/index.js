@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-// import { recipes as dummyData } from '../../dummyData';
 import Form from '../../Components/Form';
 import Recipes from './Recipes';
 import axios from 'axios';
 import '../../scss/Pages/Home/index.scss';
+import { toast, ToastContainer } from 'react-toastify';
 
 export default function App() {
-	const [recipes, setRecipies] = useState([]);
-
-	//will run when component runs successfully, gets api from backed
+	const [recipes, setRecipies] = useState(null);
+	const [ingredient, setIngredient] = useState('');
+	const [temp, setTemp] = useState('');
 
 	useEffect(() => {
 		axios
@@ -20,17 +20,66 @@ export default function App() {
 				}
 			})
 			.catch(err => {
-				console.log(err.response.data);
+				console.log('err', err.response.data);
+				let error = err?.response?.data;
+				error = !!error.error.message
+					? error.error.message
+					: !!error.message
+					? error.message
+					: '';
+				toast.error(`Something went wrong ${error}`);
+				setRecipies([]);
 			});
 	}, []);
 
-	const getRecipe = () => {};
+	const handleOnchange = e => setIngredient(e.target.value);
+
+	const getRecipe = e => {
+		e.preventDefault();
+		axios
+			.get('api/search', {
+				params: {
+					ingredient: ingredient
+				}
+			})
+			.then(res => {
+				console.log('res', res.data.data);
+				setRecipies([]);
+				setRecipies(res.data.data);
+				setTemp(Date.now());
+			})
+			.catch(err => {
+				console.log('err', err.response.data);
+				let error = err?.response?.data;
+				error = !!error.error.message
+					? error.error.message
+					: !!error.message
+					? error.message
+					: '';
+				toast.error(`Something went wrong ${error}`);
+				setRecipies([]);
+			});
+	};
+
+	const handleDeleteRecipe = recipe => {
+		setRecipies(previousData => {
+			let preData = previousData.filter(item => item._id !== recipe._id);
+			return preData;
+		});
+	};
 
 	return (
 		<div className="RecipeSearch">
-			{/* Made getRecipe prop here */}
-			<Form getRecipe={getRecipe} />
-			<Recipes recipes={recipes} />
+			<Form
+				getRecipe={getRecipe}
+				handleOnchange={handleOnchange}
+				ingredient={ingredient}
+			/>
+			<Recipes
+				recipes={recipes}
+				handleDeleteRecipe={handleDeleteRecipe}
+				temp={temp}
+			/>
 		</div>
 	);
 }

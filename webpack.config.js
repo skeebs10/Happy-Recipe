@@ -4,12 +4,10 @@ const WebpackMd5Hash = require('webpack-md5-hash');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-
 module.exports = env => {
 	return {
 		entry: {
-			App: './src/index.js',
-			main: './src/main.js'
+			App: './src/index.js'
 		},
 		output: {
 			path: path.resolve(__dirname, 'public/js/dist'),
