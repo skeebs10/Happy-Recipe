@@ -1,5 +1,5 @@
 .Button {
-  border: solid 2px #e74c3c;
+  border: solid 2px  #429e44;
   background: transparent;
   padding: 0.4rem 0.9rem;
   margin: 5px 10px;
@@ -37,7 +37,7 @@
   .Recipes__box .Recipes__text {
     margin-left: 15px; }
     .Recipes__box .Recipes__text .Recipes__title {
-      color: #e74c3c;
+      color: #429e44;
       text-transform: uppercase;
       font-size: 1.1rem;
       padding: 1.8rem 0 0.2rem 0; }

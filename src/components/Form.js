@@ -10,7 +10,7 @@ const Form = ({ getRecipe, ingredient, handleOnchange }) => (
 			name="recipeName"
 			value={ingredient}
 			onChange={handleOnchange}
-			placeholder="Type ingredient name"
+			placeholder="Type Ingredient"
 		/>
 		<Button title="Search Recipe" type="submit" />
 	</form>
