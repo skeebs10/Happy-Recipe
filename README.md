@@ -1,51 +1,29 @@
-# Big Poppa Code React Starter Kit
-This Starter Kit is being created for New Web Developers that want to get started with react
+# Happy Recipe
 
-Most people use a CLI Tool like Vue-Cli or Create React App and no idea what these things are doing
+My goal is to create an app where you can search by ingredient to find a recipe you can make at home. Often times you have ingredients laying around your home with no idea what to make. This app is helpful in providing direction for a healthy, cost effective alternative to eating out. Save money while staying entertained!
 
-The goal of this is for it to be a tool that let's you learn JS at a new level because you have access to
-everything under the hood and no opinionated set up
+I work in a food/houswares company and thought this app would be a fun way to showcase and explore my passion for culinary. Create a recipe and publish it on the website! This plaftorm can help any cook share their work of art with the world and can be a fun way to connect/network within industry. 
 
-I will base all my tutorials on this Starter Kit.
-
-# Who Am I?
-
-![arthurbernierjr.com](http://progressandfortune.com/smac_images/profile.jpg)
-
-I am Arthur Bernier Jr. I work as freelance fullstack web developer and attraction marketing consultant specializing in supporting e-commerce brands,
-subscription box sites, social activists, religious/non-profit leaders and creative entrepreneurs(i.e. barbers, artists, musicians, stylists, models and photographers).
-I have a passion for helping entrepreneurs reach their perfect audience and helping you communicate to that audience in a way that makes them know, like and trust you. I also am a Full-Time Instructor at General Assembly as well as a Software Engineer at Blavity Inc.
+HAPPY RECIPE!
 
 
-# My Favorite Online Instructors
-
-[__Colt Steele__](https://www.youtube.com/channel/UCrqAGUPPMOdo0jfQ6grikZw)
-
-[__Brad Traversy__](https://www.youtube.com/channel/UC29ju8bIPH5as8OGnQzwJyA)
-
-[__Jose Santos Garcia__](https://www.youtube.com/channel/UC46wWUso9H5KPQcoL9iE3Ug)
-
-[__Stephen Grider__](https://www.youtube.com/channel/UCQCaS3atWyNHEy5PkDXdpNg/)
+# WireFrames
+I have drafted up my wireframes in drawio. I have created a Home, Create Recipe, and Recipe page. The green mood is a trendy scheme that represents heath. Below is a link:
+https://drive.google.com/file/d/18pFYP4njZ9Io_JgprJR080sA-Z02ifoB/view?usp=sharing
 
 ## Steps
 
-**Install Gulp Globally**
-```bash
-npm i -g gulp-cli
-```
+**Components**
+-Buttons
+-createUpdateRecipe
+-Form
+-NavBar
+``
 
-**Start the dev server**
-```bash
-npm run dev
-```
-### or
-```bash
-yarn dev
-```
-
-**Start the dev server with proxy**
-```bash
-npm run proxy
+**Pages**
+-Home
+-CreateRecipe
+-Recipe
 ```
 
 **Build files for production**
@@ -59,11 +37,10 @@ npm run build
 ```
 
 **Deploy for production script**
-```bash
-npm start
-```
-### or
-```bash
-yarn start
-```
+Deployed on Heroku
+
+
+### BIG WIN ####
+I installedv Material-UI and applied it for the first time! It was fun learning new features and will definitely be using this for my future apps to create the best UX experience.
+
 # Happy-Recipe

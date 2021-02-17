@@ -34,7 +34,7 @@ const CreatUpdateRecipe = ({
 						className="Create-Update-Recipe__input col-sm-12 col-md-9"
 						name="title"
 						value={data?.title}
-						placeholder="Pizza"
+						placeholder=""
 					/>
 				</div>
 				<br />
@@ -48,7 +48,7 @@ const CreatUpdateRecipe = ({
 						className="Create-Update-Recipe__input col-sm-12 col-md-9"
 						name="description"
 						value={data?.description}
-						placeholder="This is more cheesy"
+						placeholder=""
 					/>
 				</div>
 				<br />
@@ -62,7 +62,7 @@ const CreatUpdateRecipe = ({
 						className="Create-Update-Recipe__input col-sm-12 col-md-9"
 						name="image_url"
 						value={data?.image_url}
-						placeholder="https://www.google.com"
+						placeholder=""
 					/>
 				</div>
 				<br />
@@ -76,7 +76,7 @@ const CreatUpdateRecipe = ({
 						className="Create-Update-Recipe__input col-sm-12 col-md-9"
 						name="publisher"
 						value={data?.publisher}
-						placeholder="Natalia"
+						placeholder=""
 					/>
 				</div>
 				<br />
@@ -91,7 +91,7 @@ const CreatUpdateRecipe = ({
 							className="Create-Update-Recipe__ingredient-input"
 							name="ingredients"
 							value={ingredientName}
-							placeholder="rice"
+							placeholder=""
 						/>
 						<div
 							className="Create-Update-Recipe__ingredient-add"
