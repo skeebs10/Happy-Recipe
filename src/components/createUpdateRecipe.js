@@ -14,7 +14,6 @@ const CreatUpdateRecipe = ({
 
 	///using props in here from index.js file under CreatRecipe page
 }) => {
-
 	return (
 		<div className="Create-Update-Recipe__Card">
 			<form onSubmit={handleSubmit}>
@@ -92,7 +91,7 @@ const CreatUpdateRecipe = ({
 							onClick={handleAddIngredient}
 							type="button"
 						>
-							&nbsp; +Add 
+							&nbsp; +Add
 							{/* adds a space */}
 						</div>
 					</div>

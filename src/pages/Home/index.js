@@ -70,6 +70,7 @@ export default function App() {
 
 	return (
 		<div className="RecipeSearch">
+			{/* //passing props from here */}
 			<Form
 				getRecipe={getRecipe}
 				handleOnchange={handleOnchange}

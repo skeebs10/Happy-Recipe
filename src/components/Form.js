@@ -4,6 +4,7 @@ import '../scss/Components/Form.scss';
 
 const Form = ({ getRecipe, ingredient, handleOnchange }) => (
 	<form onSubmit={getRecipe} style={{ marginBottom: '2rem' }}>
+		{/* using props  */}
 		<input
 			className="Form__input"
 			type="text"
