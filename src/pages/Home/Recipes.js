@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+// The useHistory hook gives you access to the history instance that you may use to navigate.
 import Button from '../../Components/Buttons';
-import Dialog from '@material-ui/core/Dialog';
+import Dialog from '@material-ui/core/Dialog'; 
+// Dialog is a type of modal window that appears in front of app content to provide critical information or ask for a decision. 
 import DialogActions from '@material-ui/core/DialogActions';
-import DialogTitle from '@material-ui/core/DialogTitle';
+// DialogActions if `true`, the actions do not have additional margin.
+import DialogTitle from '@material-ui/core/DialogTitle'; //Boolean false
 import '../../scss/Pages/Home/Recipes.scss';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -62,7 +65,7 @@ const Recipes = ({ recipes, handleDeleteRecipe, temp }) => {
 					aria-describedby="alert-dialog-description"
 				>
 					<DialogTitle id="alert-dialog-title">
-						Are you Sure you want to delete {toDeleteID.title} recipe?
+						You sure you want to delete this {toDeleteID.title} recipe?
 					</DialogTitle>
 					<DialogActions>
 						<Button onClick={handleOpen} title="Disagree" />
