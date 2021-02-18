@@ -11,6 +11,7 @@ const App = () => {
 		<Router>
 			<Navbar />
 			<Switch>
+				{/* switch between browsers */}
 				{/* Renders the first child exclusively. All children of switch should be route */}
 				{routes.map(({ Component, key, path }) => (
 					<Route

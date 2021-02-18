@@ -28,11 +28,12 @@ export default function App() {
 					? error.message
 					: '';
 				toast.error(`Something went wrong ${error}`);
+				// if error empty previous recipe no recipe should be found
 				setRecipies([]);
 			});
 	}, []);
 
-	const handleOnchange = e => setIngredient(e.target.value);
+	const handleOnchange = e => setIngredient(e.target.value); //event listener. when search for ingredient handles that ingredient name for searching
 
 	const getRecipe = e => {
 		e.preventDefault();
@@ -46,7 +47,7 @@ export default function App() {
 				console.log('res', res.data.data);
 				setRecipies([]);
 				setRecipies(res.data.data);
-				setTemp(Date.now());
+				setTemp(Date.now()); //detects rerender if recipe got changed
 			})
 			.catch(err => {
 				console.log('err', err.response.data);
@@ -65,6 +66,7 @@ export default function App() {
 		setRecipies(previousData => {
 			let preData = previousData.filter(item => item._id !== recipe._id);
 			return preData;
+			// delete specific recipe array
 		});
 	};
 

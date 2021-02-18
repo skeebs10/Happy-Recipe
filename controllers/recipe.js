@@ -10,8 +10,9 @@ recipeRouter.use(express.json());
 // CRUD
 // Create
 
+//getting all recipes 
 recipeRouter
-	.route('/')
+	.route('/') //line 31 in server.js
 	.all((req, res, next) => {
 		res.setHeader('Content-Type', 'application/json');
 		next();
@@ -21,7 +22,7 @@ recipeRouter
 	/* Index */
 	.get(async (req, res) => {
 		try {
-			const allRecipes = await recipe.find({});
+			const allRecipes = await recipe.find({}); //method from mongodb
 			res.status(200).json({
 				success: true,
 				message: 'Recipes found',
@@ -224,7 +225,7 @@ recipeRouter
 			});
 		}
 	});
-//api search//
+//api search for ingredient
 recipeRouter
 	.route('/search')
 	.all((req, res, next) => {
@@ -239,8 +240,9 @@ recipeRouter
 					message: 'Ingredient name is required'
 				}
 			});
-		recipe
-			.find({ ingredients: { $all: [req.query.ingredient] } })
+		recipe 
+		// mongodb modal
+			.find({ ingredients: { $all: [req.query.ingredient] } }) //method by mongodb
 			.then(
 				data => {
 					res.status(200).json({

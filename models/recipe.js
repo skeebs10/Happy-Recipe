@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-// create our schema
+// create our schema create recipe in mongodb
 const recipeSchema = new Schema(
   {
     title: {

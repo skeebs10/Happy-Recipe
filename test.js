@@ -17,6 +17,7 @@
 // 		console.log('aa', aa);
 // 		aa.map(async item => {
 // 			await axios
+// backend on 8000 front end 3000
 // 				.post('http://localhost:8000/api', item)
 // 				.then(res => {
 // 					console.log('success');
@@ -29,3 +30,5 @@
 // 	.catch(err => {
 // 		console.log('err', err);
 // 	});
+
+// Mongodb is connected with our server through credentials mentioned in .env file

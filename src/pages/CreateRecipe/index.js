@@ -13,14 +13,15 @@ const CreateRecipe = () => {
 		ingredients: []
 	});
 	const [ingredientName, setIngredientName] = useState(null);
-
+	//handles changes when input all data in create recipe
 	const handleChange = e => {
 		if (e.target.name === 'ingredients')
 			return setIngredientName(e.target.value);
 		setData({ ...data, [e.target.name]: e.target.value });
 	};
-
+	//add button in list
 	const handleAddIngredient = () => {
+		//setData is the hook. below declared
 		setData({ ...data, ingredients: [...data.ingredients, ingredientName] });
 		setIngredientName('');
 	};
@@ -38,10 +39,12 @@ const CreateRecipe = () => {
 						publisher: '',
 						ingredients: []
 					});
+					//slider bar top right corner
 					toast.success(data.message);
 				}
 			})
 			.catch(err => {
+				//errors in different scenarios
 				console.log('err', err.response.data);
 				let error = err?.response?.data;
 				error = !!error.error.message

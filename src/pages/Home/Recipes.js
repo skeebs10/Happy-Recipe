@@ -11,18 +11,19 @@ import '../../scss/Pages/Home/Recipes.scss';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+//recipe.js is all the recipes on the home page index.js main file
 const Recipes = ({ recipes, handleDeleteRecipe, temp }) => {
-	const history = useHistory();
-	const [open, setOpen] = React.useState(false);
+	const history = useHistory(); //from react router
+	const [open, setOpen] = React.useState(false); //dialogue is false. when delete changes state
 	const [toDeleteID, setToDeleteID] = useState('');
 
 	const handleRecipeButton = recipe => {
-		history.push(`/recipe/${recipe._id}`);
+		history.push(`/recipe/${recipe._id}`); //view recipe routes application to new url
 	};
 
 	const handleClickOpen = recipe => {
-		setToDeleteID(recipe);
-		setOpen(true);
+		setToDeleteID(recipe); //setToDeleteID is a hook
+		setOpen(true); //setOpen is a hook
 	};
 
 	const handleOpen = deleteRecipe => {
@@ -74,6 +75,7 @@ const Recipes = ({ recipes, handleDeleteRecipe, temp }) => {
 				</Dialog>
 			</div>
 			<div className="row">
+				{/* if recieved recipes from api*/}
 				{!recipes ? (
 					<div className="Recipes__no-recipe">loading</div>
 				) : !!recipes?.length ? (

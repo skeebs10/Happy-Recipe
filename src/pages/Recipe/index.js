@@ -8,14 +8,14 @@ import Dialog from '@material-ui/core/Dialog';
 import { toast } from 'react-toastify';
 
 function RecipeDetail({ match }) {
-	const [recipeDetails, setRecipeDetails] = useState(null);
+	//match prop coming from react-router
+	const [recipeDetails, setRecipeDetails] = useState(null); //most accurate but could be an string as well
 	const [loading, setLoading] = useState(true);
 	const [errMess, setErrMess] = useState(null);
 	const [ingredientName, setIngredientName] = useState(null);
-	const history = useHistory();
+	const history = useHistory(); //react router
 	const [open, setOpen] = useState(false);
 	const [data, setData] = useState(null);
-	// const [errMess, setErrMess] = useState(null);
 
 	useEffect(() => {
 		axios
@@ -51,17 +51,17 @@ function RecipeDetail({ match }) {
 	}, []);
 
 	const handleGoHome = () => {
-		history.push('/');
+		history.push('/'); //pushing back to home url
 	};
 
 	const handleOpen = () => {
-		setOpen(!open);
+		setOpen(!open); // invert previous state and this the modal that pops up
 	};
 
 	const handleChange = e => {
 		if (e.target.name === 'ingredients')
 			return setIngredientName(e.target.value);
-		setData({ ...data, [e.target.name]: e.target.value });
+		setData({ ...data, [e.target.name]: e.target.value }); //data from api
 	};
 
 	const handleAddIngredient = () => {
@@ -136,8 +136,10 @@ function RecipeDetail({ match }) {
 						<h5 className="Active-recipe__sub-heading">
 							Ingredients:{' '}
 							<span>
-								{recipeDetails.ingredients.map((ingredient, index) =>
-									index > 0 ? `, ${ingredient}` : ingredient
+								{recipeDetails.ingredients.map(
+									(ingredient, index) =>
+										index > 0 ? `, ${ingredient}` : ingredient
+									// if index is great zero display comma
 								)}
 							</span>
 						</h5>
