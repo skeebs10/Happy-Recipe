@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 // The useHistory hook gives you access to the history instance that you may use to navigate.
 import Button from '../../Components/Buttons';
-import Dialog from '@material-ui/core/Dialog'; 
-// Dialog is a type of modal window that appears in front of app content to provide critical information or ask for a decision. 
+import Dialog from '@material-ui/core/Dialog';
+// Dialog is a type of modal window that appears in front of app content to provide critical information or ask for a decision.
 import DialogActions from '@material-ui/core/DialogActions';
 // DialogActions if `true`, the actions do not have additional margin.
 import DialogTitle from '@material-ui/core/DialogTitle'; //Boolean false

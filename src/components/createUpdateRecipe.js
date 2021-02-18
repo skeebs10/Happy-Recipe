@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import Button from './Buttons';
 import '../scss/Components/CreateUpdateRecipe.scss';
 
+//component updates recipes and creates
+
 const CreatUpdateRecipe = ({
 	handleSubmit,
 	handleChange,
@@ -9,17 +11,9 @@ const CreatUpdateRecipe = ({
 	update,
 	handleAddIngredient,
 	ingredientName
+
+	///using props in here from index.js file under CreatRecipe page
 }) => {
-	useEffect(() => {
-		const ingredientInput = document.getElementsByClassName(
-			'Create-Update-Recipe__ingredient-input'
-		);
-		ingredientInput[0].addEventListener('keyup', function(event) {
-			if (event.keyCode === 13) {
-				handleAddIngredient();
-			}
-		});
-	}, []);
 
 	return (
 		<div className="Create-Update-Recipe__Card">
@@ -98,7 +92,8 @@ const CreatUpdateRecipe = ({
 							onClick={handleAddIngredient}
 							type="button"
 						>
-							&nbsp; +Add
+							&nbsp; +Add 
+							{/* adds a space */}
 						</div>
 					</div>
 				</div>

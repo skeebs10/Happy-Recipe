@@ -63,6 +63,7 @@ const CreateRecipe = () => {
 				handleChange={handleChange}
 				handleAddIngredient={handleAddIngredient}
 				ingredientName={ingredientName}
+				///passed props in creatUpdateRecipes.js from here
 			/>
 		</div>
 	);

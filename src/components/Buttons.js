@@ -6,7 +6,7 @@ const Button = ({ title, className, onClick, type }, props) => {
 		<button
 			className={className ? className + ' Button' : 'Button'}
 			onClick={onClick}
-			type={type ? type : 'text'}
+			type={type ? type : 'text'} ///checking if type is available; type is type
 			{...props}
 		>
 			{title}
