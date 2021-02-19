@@ -1,34 +1,26 @@
-// const { default: axios } = require('axios');
+const { default: axios } = require("axios");
 
-// axios
-// 	.get('http://www.recipepuppy.com/api/')
-// 	.then(res => {
-// 		// console.log('res', res.data);
-
-// 		let aa = res.data.results.map(item => ({
-// 			title: item.title,
-// 			description: item.title,
-// 			image_url: item.thumbnail
-// 				? item.thumbnail
-// 				: 'https://assets.bonappetit.com/photos/5aa9665c275dc52331d9184b/5:7/w_2445,h_3423,c_limit/pantry-pasta.jpg',
-// 			ingredients: item.ingredients.split(','),
-// 			publisher: 'Natalia'
-// 		}));
-// 		console.log('aa', aa);
-// 		aa.map(async item => {
-// 			await axios
-// backend on 8000 front end 3000
-// 				.post('http://localhost:8000/api', item)
-// 				.then(res => {
-// 					console.log('success');
-// 				})
-// 				.catch(err => {
-// 					console.log('err', err);
-// 				});
-// 		});
-// 	})
-// 	.catch(err => {
-// 		console.log('err', err);
-// 	});
-
-// Mongodb is connected with our server through credentials mentioned in .env file
+axios
+  .get(
+    "https://api.edamam.com/search?q=beef&app_id=fe3678b3&app_key=0a538d08f88f1dfc63f808d434f43772"
+  )
+  .then(({ data }) => {
+    let aa = data?.hits.map((item) => ({
+      title: item.recipe?.label,
+      image_url: item.recipe?.image,
+      publisher: item.recipe?.source,
+      ingredients: item.recipe?.ingredientLines,
+      description: "Descrition is not available",
+    }));
+    console.log("aa", aa);
+    aa.map(async (item) => {
+      await axios
+        .post("http://localhost:8000/api", item)
+        .then((res) => {
+          console.log("success");
+        })
+        .catch((err) => {
+          console.log("err", err);
+        });
+    });
+  });
