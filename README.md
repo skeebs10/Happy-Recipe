@@ -11,7 +11,13 @@ HAPPY RECIPE!
 I have drafted up my wireframes in drawio. I have created a Home, Create Recipe, and Recipe page. The green mood is a trendy scheme that represents heath. Below is a link:
 https://drive.google.com/file/d/18pFYP4njZ9Io_JgprJR080sA-Z02ifoB/view?usp=sharing
 
-## Steps
+## Technologies Used
+HTML
+SCSS
+REACT
+MONGODB 
+EXPRESS
+MATERIAL UI
 
 **Components**
 -Buttons
